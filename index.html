@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>andrew ngo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <img src="img/banner.jpg" alt="banner" class="banner">
+
+        <div class="title-container">
+            <h1 class="name">andrew ngo</h1>
+            <p class="subtitle">software engineer ^ (wsu & ece)</p>
+            <div class="header-links">
+                <a class="ext" href="mailto:ango3161016@gmail.com">email</a>
+                <span class="divider">|</span>
+                <a class="ext" target="_blank" href="https://www.linkedin.com/in/andrewngo26/">linkedin ↗</a>
+            </div>
+        </div>
+
+        <main>
+            <section class="collapsible">
+                <input type="checkbox" id="toggle-whoami" class="toggle-trigger">
+                
+                <label for="toggle-whoami">
+                    <h3>whoami</h3>
+                </label>
+                
+                <div class="content">
+                    <p>Hello! I'm Andrew, a Computer Engineering student at Wichita State and a Software Engineer Intern at Bombardier.</p>
+                    <p>Recently, I have been diving deep into digital design and computer architecture, focusing on the fundamentals required to build a career in the silicon and VLSI space. <span class="emoji-fix">🙂‍↕️</span></p>
+                    <p>Outside of engineering, I'm either spending time with friends and family, watching films, discovering music, or playing video games. I also love a good pickleball session! </p>
+                </div>
+            </section>
+
+            <section class="collapsible">
+                <input type="checkbox" id="toggle-experience" class="toggle-trigger">
+                
+                <label for="toggle-experience">
+                    <h3>experience</h3>
+                </label>
+                
+                <div class="content">
+                    <p class="career-contact">Interested in working together? Reach out to me or connect on <a class="ext" target="_blank" href="https://www.linkedin.com/in/andrewngo26/">LinkedIn</a>.</p>
+
+                    <div class="career-entry">
+                        <img src="img/bombardier_logo.jpg" alt="Bombardier" class="career-logo">
+                        <div>
+                            <div class="career-company">Bombardier</div>
+                            <div class="career-role">Software Engineer Intern</div>
+                            <div class="career-date">05/2026 — Present</div>
+                            <div class="career-detail"></div>
+                        </div>
+                    </div>
+
+                    <div class="career-entry">
+                        <img src="img/kochindustries_logo.jpg" alt="Koch Industries" class="career-logo">
+                        <div>
+                            <div class="career-company">Koch Industries</div>
+                            <div class="career-role">Product Support Analyst Co-op</div>
+                            <div class="career-date">01/2026 — 05/2026</div>
+                            <div class="career-detail">@ Flint Hills Resources</div>
+                        </div>
+                    </div>
+
+                    <div class="career-entry">
+                        <img src="img/netapp_logo.jpg" alt="NetApp" class="career-logo">
+                        <div>
+                            <div class="career-company">NetApp</div>
+                            <div class="career-role">QA Analyst Intern</div>
+                            <div class="career-date">03/2025 — 01/2026</div>
+                            <div class="career-detail"></div>
+                        </div>
+                    </div>
+
+                    <div class="career-entry">
+                        <img src="img/boeing_logo.jpg" alt="Boeing" class="career-logo">
+                        <div>
+                            <div class="career-company">Boeing</div>
+                            <div class="career-role">Information Technology Intern</div>
+                            <div class="career-date">11/2024 — 03/2025</div>
+                            <div class="career-detail"></div>
+                        </div>
+                    </div>
+
+                    <div class="career-entry">
+                        <img src="img/wichita_state_university_logo.jpg" alt="Wichita State University" class="career-logo">
+                        <div>
+                            <div class="career-company">Wichita State University</div>
+                            <div class="career-role">B.S. in Computer Engineering (Min. Computer Science)</div>
+                            <div class="career-date">08/2024 — Expected 05/2028</div>
+                            <div class="career-detail">Focus: Digital Design, Computer Architecture, Embedded Systems</div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            
+            <section class="collapsible">
+                <input type="checkbox" id="toggle-projects" class="toggle-trigger">
+                
+                <label for="toggle-projects">
+                    <h3>projects</h3>
+                </label>
+                
+                <div class="content">
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <span class="project-name">Home Lab</span>
+                            <div>
+                                <!-- <a class="project-link ext" target="_blank" href="github.com">github ↗</a> -->
+                            </div>
+                        </div>
+                        <div class="project-tech">proxmox, docker-compose, zfs, ubuntu server, cloudflare</div>
+                        <p class="project-desc">Architected and deployed a self-hosted virtualized network environment utilizing a Proxmox hypervisor and ZFS mirrored storage arrays with automated S.M.A.R.T. diagnostics. Infrastructure supports self-hosted local cloud services and a media server handling 7+ concurrent streams. Implemented secure remote access via VPN networks and Cloudflare tunnels to safely manage public web instances, including hosting the official infrastructure and data collection pipelines for a 60+ participant regional student hackathon.</p>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <span class="project-name">Ollama Home Assistant</span>
+                            <div>
+                                <!-- <a class="project-link ext" target="_blank" href="github.com">github ↗</a> -->
+                            </div>
+                        </div>
+                        <div class="project-tech">python, ollama (llama 3.1), openai whisper, flask, raspberry pi, gpio</div>
+                        <p class="project-desc">Developed an entirely offline, voice-activated AI home assistant deployed on a Raspberry Pi using a custom physical GPIO button interface. Built a lightweight Python and Flask application layer to orchestrate live hardware audio capture, local transcription via OpenAI Whisper, and localized inference using Ollama to serve Meta's LLaMA 3.1 model completely on the edge.</p>
+                    </div>
+
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+
+</body>
+</html>
