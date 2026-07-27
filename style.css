@@ -284,7 +284,7 @@ a.ext {
 }
 
 .toggle-trigger:checked ~ .content {
-    max-height: 1200px; 
+    max-height: 3000px;
     opacity: 1;
     transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
