@@ -116,9 +116,19 @@
                     
                     <div class="project-card">
                         <div class="project-header">
+                            <span class="project-name">FPGA Real-Time Temperature Monitor</span>
+                            <div>
+                                <a class="project-link ext" target="_blank" href="https://github.com/drewngo/Nexys-A7-ADT7420-Temperature-Sensor">github ↗</a>
+                            </div>
+                        </div>
+                        <div class="project-tech">verilog, nexys a7-100t, i2c, vivado, icarus verilog</div>
+                        <p class="project-desc">Built a from-scratch I2C master FSM in Verilog to read an ADT7420 temperature sensor on a Nexys A7-100T FPGA, dividing the system clock into quarter-phases so SDA transitions land cleanly away from SCL edges. Sensor readings are converted into Celsius/Fahrenheit BCD digits, with a switch-driven unit toggle, and pushed out to a multiplexed seven-segment display refreshed fast enough to avoid visible flicker. Verified protocol correctness with a self-checking testbench that models the ADT7420 as a slave device, asserting each transaction byte and ACK/NACK bit, including randomized data payloads across repeated read cycles.</p>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
                             <span class="project-name">Home Lab</span>
                             <div>
-                                <!-- <a class="project-link ext" target="_blank" href="github.com">github ↗</a> -->
                             </div>
                         </div>
                         <div class="project-tech">proxmox, docker-compose, zfs, ubuntu server, cloudflare</div>
@@ -129,7 +139,6 @@
                         <div class="project-header">
                             <span class="project-name">Ollama Home Assistant</span>
                             <div>
-                                <!-- <a class="project-link ext" target="_blank" href="github.com">github ↗</a> -->
                             </div>
                         </div>
                         <div class="project-tech">python, ollama (llama 3.1), openai whisper, flask, raspberry pi, gpio</div>
