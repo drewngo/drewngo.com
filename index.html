@@ -38,7 +38,9 @@
                 <div class="content">
                     <p>Hello! I'm Andrew, a Computer Engineering student at Wichita State and a Software Engineer Intern at Bombardier.</p>
                     <p>Recently, I have been diving deep into digital design and computer architecture, focusing on the fundamentals required to build a career in the silicon and VLSI space.</p>
-                    <p>Outside of engineering, I'm either spending time with friends and family, watching films, discovering music, or playing video games. I also love a good pickleball session! </p>
+                    <p>Outside of engineering, I'm either spending time with friends and family, watching films, reading comics/manga, discovering music, or playing video games. I also love a good pickleball session!</p>
+                    <p>Here's what I'm currently into:</p>
+                    <div id="currently-content" class="currently-list"></div>
                 </div>
             </section>
 
@@ -151,6 +153,102 @@
 
         </main>
     </div>
+
+    <script>
+        (function () {
+            const GIST_URL = "https://gist.githubusercontent.com/drewngo/86e6049381f2a0b9dcfb0e731ec97c48/raw/currently.json";
+            const CATEGORIES = ["reading", "watching", "listening"];
+
+            function buildCard(item) {
+                const card = document.createElement("div");
+                card.className = "currently-card";
+
+                if (item.cover) {
+                    const img = document.createElement("img");
+                    img.src = item.cover;
+                    img.alt = item.title;
+                    img.className = "currently-cover";
+                    card.appendChild(img);
+                }
+
+                const info = document.createElement("div");
+                info.className = "currently-info";
+
+                const title = document.createElement("div");
+                title.className = "currently-title";
+                if (item.link) {
+                    const a = document.createElement("a");
+                    a.className = "ext";
+                    a.target = "_blank";
+                    a.href = item.link;
+                    a.textContent = item.title;
+                    title.appendChild(a);
+                } else {
+                    title.textContent = item.title;
+                }
+                info.appendChild(title);
+
+                const creator = item.author || item.creator;
+                if (creator) {
+                    const byline = document.createElement("div");
+                    byline.className = "currently-byline";
+                    byline.textContent = creator;
+                    info.appendChild(byline);
+                }
+
+                const meta = [item.status, item.progress].filter(Boolean).join(" — ");
+                if (meta) {
+                    const status = document.createElement("div");
+                    status.className = "currently-status";
+                    status.textContent = meta;
+                    info.appendChild(status);
+                }
+
+                if (item.note) {
+                    const note = document.createElement("div");
+                    note.className = "currently-note";
+                    note.textContent = item.note;
+                    info.appendChild(note);
+                }
+
+                card.appendChild(info);
+                return card;
+            }
+
+            fetch(GIST_URL)
+                .then((res) => res.json())
+                .then((data) => {
+                    const container = document.getElementById("currently-content");
+                    let rendered = false;
+
+                    CATEGORIES.forEach((category) => {
+                        const items = data[category];
+                        if (!items || items.length === 0) return;
+
+                        let lastLabel = null;
+                        items.forEach((item) => {
+                            const label = (item.status === "finished" ? "finished " : "currently ") + category;
+                            if (label !== lastLabel) {
+                                const heading = document.createElement("div");
+                                heading.className = "currently-category";
+                                heading.textContent = label;
+                                container.appendChild(heading);
+                                lastLabel = label;
+                            }
+                            container.appendChild(buildCard(item));
+                        });
+                        rendered = true;
+                    });
+
+                    if (!rendered) {
+                        container.textContent = "nothing to show right now.";
+                    }
+                })
+                .catch(() => {
+                    document.getElementById("currently-content").textContent = "couldn't load right now.";
+                });
+        })();
+    </script>
 
 </body>
 </html>
