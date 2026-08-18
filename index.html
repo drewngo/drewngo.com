@@ -115,6 +115,17 @@
                 </label>
                 
                 <div class="content">
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <span class="project-name">NOAA APT Satellite Decoder</span>
+                            <div>
+                                <a class="project-link ext" target="_blank" href="https://github.com/drewngo/noaa-apt-decoder-artix7">github ↗</a>
+                            </div>
+                        </div>
+                        <div class="project-tech">verilog, nexys a7-100t, vivado, python, dsp, fixed-point fir filters</div>
+                        <p class="project-desc">Designing a dual-implementation NOAA APT weather satellite decoder targeting a Xilinx Artix-7 FPGA, processing archived pre-demodulation IQ recordings into decoded imagery. Built a 5-stage Python reference pipeline validating the full signal chain: a Kaiser-windowed channel-select FIR, FM demodulation via phase differentiation, and a cascaded two-stage decimation filter bank correcting a 62,400 Hz sample rate down to the 4,160 Hz APT word rate exactly at Nyquist, matching NOAA's original zero-margin engineering. Currently implementing the Verilog RTL, including a CORDIC-based fixed-point FM demodulator and time-multiplexed serial FIR architecture designed to reuse a single DSP slice across all filter taps within the ~1,600-cycle-per-sample budget at 100 MHz.</p>
+                    </div>
                     
                     <div class="project-card">
                         <div class="project-header">
