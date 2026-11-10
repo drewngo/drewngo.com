@@ -4,262 +4,289 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="Andrew Ngo: computer engineering student at Wichita State and software engineer intern at Bombardier. FPGA, DSP and digital design projects.">
+    <meta name="theme-color" content="#0d0e0c">
+    <meta property="og:title" content="andrew ngo">
+    <meta property="og:description" content="computer engineering @ wichita state. software engineer intern @ bombardier.">
+    <meta property="og:image" content="img/banner.jpg">
 
     <link rel="icon" type="image/png" href="img/frutiger/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%B0%EF%B8%8F%3C/text%3E%3C/svg%3E">
 
     <title>andrew ngo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add('js','m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),900)</script>
 </head>
 <body>
+    <a class="skip" href="#whoami">skip to content</a>
 
-    <div class="container">
-        <img src="img/banner.jpg" alt="banner" class="banner">
+    <header class="bar">
+        <div class="wrap bar__in">
+            <a class="mark" href="#top">andrew_ngo</a>
+            <nav class="bar__nav" aria-label="sections">
+                <a href="#whoami">whoami</a>
+                <a href="#work">work</a>
+                <a href="#projects">projects</a>
+                <a href="#signal">signal</a>
+            </nav>
+            <span class="clock mono" aria-label="local time in wichita"><span class="clock__dot"></span>wichita <time id="clock">--:--</time></span>
+        </div>
+    </header>
 
-        <div class="title-container">
-            <h1 class="name">andrew_ngo</h1>
-            <p class="subtitle">software_engineer ^ (ece & student & wichita_state)</p>
-            <div class="header-links">
-                <a class="ext" href="mailto:ango3161016@gmail.com">email</a>
-                <span class="divider">|</span>
-                <a class="ext" target="_blank" href="https://www.linkedin.com/in/andrewngo26/">linkedin ↗</a>
-                <span class="divider">|</span>
-                <a class="ext" target="_blank" href="https://github.com/drewngo">github ↗</a>
+    <main id="top">
+        <section class="hero" data-enter aria-labelledby="hero-h">
+            <div class="wrap hero__in">
+                <div class="hero__top">
+                    <canvas class="hero__trace" aria-hidden="true"></canvas>
+                    <p class="hero__kicker mono">computer engineering @ wichita state</p>
+                    <h1 id="hero-h" class="hero__h">andrew ngo</h1>
+                </div>
+                <div class="hero__row">
+                    <p class="hero__lead">Software Engineer Intern at the Bombardier Flight Test Center and FPGA &amp; DSP Design Researcher in Wichita State's Quantum Science and Engineering Lab, working towards a career in FPGA design for space and avionics communication systems.</p>
+                    <div class="hero__links">
+                        <a class="btn" href="mailto:an@drewngo.com">email me</a>
+                        <a class="btn btn--ghost" target="_blank" rel="noopener" href="https://github.com/drewngo">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
+                        <a class="btn btn--ghost" target="_blank" rel="noopener" href="https://www.linkedin.com/in/andrewngo26/">linkedin <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
+                    </div>
+                </div>
+                <div class="hero__media">
+                    <img src="img/banner.jpg" alt="Andrew on the Chicago Riverwalk at night" class="hero__img" fetchpriority="high">
+                </div>
+            </div>
+        </section>
+
+        <section id="whoami" class="sec" aria-labelledby="whoami-h">
+            <div class="wrap">
+                <header class="sec__head">
+                    <span class="sec__no mono">01</span>
+                    <h2 id="whoami-h">whoami</h2>
+                    <svg class="orbit" viewBox="0 0 240 64" aria-hidden="true">
+                        <path id="orbit-path" class="orbit__path" d="M12 40 A108 17 -6 1 1 228 24 A108 17 -6 1 1 12 40 Z"/>
+                        <g class="orbit__earth">
+                            <circle cx="120" cy="32" r="14"/>
+                            <ellipse cx="120" cy="32" rx="14" ry="5"/>
+                            <ellipse cx="120" cy="32" rx="6" ry="14"/>
+                        </g>
+                        <g class="orbit__sat">
+                            <rect x="-2.5" y="-2.5" width="5" height="5" rx="1"/>
+                            <rect class="orbit__panel" x="-11" y="-1.5" width="7" height="3"/>
+                            <rect class="orbit__panel" x="4" y="-1.5" width="7" height="3"/>
+                            <animateMotion dur="24s" repeatCount="indefinite"><mpath href="#orbit-path"/></animateMotion>
+                        </g>
+                    </svg>
+                </header>
+
+                <div class="who">
+                    <div class="who__text">
+                        <p class="who__big">Hi, I'm Andrew, a computer engineering junior at Wichita State. I focus on RTL design and want to build FPGA and embedded systems for space and avionics communications.</p>
+                        <p>Right now, I'm designing the FPGA and electronics for a laser-free quantum magnetometer in the Quantum Science and Engineering Lab. I'm also studying for my ham radio Technician license, serving as External Vice President of our Society of Asian Scientists and Engineers (SASE) chapter, and co-leading CosmoShox, our NASA SUITS team.</p>
+                        <p>Outside of engineering, I'm usually with friends and family, rock climbing, coaching intramural volleyball, reading comics and manga, watching films, finding new music, or playing video games.</p>
+                    </div>
+                    <div class="who__now">
+                        <h3 class="who__sub mono">currently into</h3>
+                        <div id="currently-content" class="currently"></div>
+                    </div>
+                    <div class="who__photos">
+                        <img src="img/IMG_2344.jpg" alt="Andrew with a group of friends at night outside Pike Place Market in Seattle" loading="lazy">
+                        <img src="img/1794247330929.jpg" alt="Andrew and his FireWatch teammates holding their 2nd place award" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="sec" aria-labelledby="work-h">
+            <div class="wrap">
+                <header class="sec__head">
+                    <span class="sec__no mono">02</span>
+                    <h2 id="work-h">work &amp; school</h2>
+                    <p class="sec__aside">Interested in working together? Reach out or connect on <a class="link" target="_blank" rel="noopener" href="https://www.linkedin.com/in/andrewngo26/">LinkedIn</a>.</p>
+                </header>
+
+                <h3 class="jobs__label mono">experience</h3>
+                <ol class="jobs">
+                    <li class="job">
+                        <img src="img/wichita_state_university_logo.jpg" alt="" class="job__logo">
+                        <div class="job__who">
+                            <span class="job__co">Quantum Science and Engineering Lab @ Wichita State University</span>
+                            <span class="job__role">FPGA &amp; DSP Design Researcher</span>
+                        </div>
+                        <span class="job__date mono"><span class="live"></span>09/2026 – now</span>
+                    </li>
+                    <li class="job">
+                        <img src="img/bombardier_logo.jpg" alt="" class="job__logo">
+                        <div class="job__who">
+                            <span class="job__co">Bombardier</span>
+                            <span class="job__role">Software Engineer Intern</span>
+                        </div>
+                        <span class="job__date mono"><span class="live"></span>05/2026 – now</span>
+                    </li>
+                    <li class="job">
+                        <img src="img/kochindustries_logo.jpg" alt="" class="job__logo">
+                        <div class="job__who">
+                            <span class="job__co">Koch Industries</span>
+                            <span class="job__role">Product Support Analyst Co-op</span>
+                        </div>
+                        <span class="job__date mono">01/2026 – 05/2026</span>
+                    </li>
+                    <li class="job">
+                        <img src="img/netapp_logo.jpg" alt="" class="job__logo">
+                        <div class="job__who">
+                            <span class="job__co">NetApp</span>
+                            <span class="job__role">QA Analyst Intern</span>
+                        </div>
+                        <span class="job__date mono">03/2025 – 01/2026</span>
+                    </li>
+                    <li class="job">
+                        <img src="img/boeing_logo.jpg" alt="" class="job__logo">
+                        <div class="job__who">
+                            <span class="job__co">Boeing</span>
+                            <span class="job__role">Information Technology Intern</span>
+                        </div>
+                        <span class="job__date mono">11/2024 – 03/2025</span>
+                    </li>
+                </ol>
+
+                <h3 class="jobs__label mono">education</h3>
+                <ol class="jobs">
+                    <li class="job">
+                        <img src="img/wichita_state_university_logo.jpg" alt="" class="job__logo">
+                        <div class="job__who">
+                            <span class="job__co">Wichita State University</span>
+                            <span class="job__role">B.S. Computer Engineering, minor in Computer Science</span>
+                        </div>
+                        <span class="job__date mono">08/2024 – 05/2028</span>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="projects" class="sec" aria-labelledby="projects-h">
+            <div class="wrap">
+                <header class="sec__head">
+                    <span class="sec__no mono">03</span>
+                    <h2 id="projects-h">projects</h2>
+                </header>
+
+                <div class="cards">
+                    <a class="card card--wide" target="_blank" rel="noopener" href="https://github.com/isaksmith/Firewatch">
+                        <div class="card__top">
+                            <div class="card__title">
+                                <h3>FireWatch</h3>
+                                <span class="award mono">2nd place · Lockheed Martin Skunk Works hackathon</span>
+                            </div>
+                            <span class="card__go mono">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
+                        </div>
+                        <ul class="tags mono"><li>satellites</li><li>goes / viirs / modis</li><li>lora mesh</li><li>meshtastic</li><li>python</li><li>react</li></ul>
+                        <p>A detect, confirm and respond system for rural Kansas volunteer fire districts, built in one weekend by a five-person team at Firewatch 2026, the WSU Innovation Works × Lockheed Martin Skunk Works hackathon. It fuses GOES, VIIRS and MODIS satellite hotspots with power-line faults and texted reports, then pages over SMS and a Meshtastic LoRa mesh, so alerts still go out on one bar of cell.</p>
+                        <p>Built the fire spread forecast: an NLCD/CDL fuel map, terrain, hourly wind and a 24-member ensemble. Back-tested against archived VIIRS, MODIS and GOES-19 fire detections from real Plains fires (Anderson Creek, Starbuck, Ranger Road): starting from the first satellite pass, its range covered 77% of later polar-orbiter detections, against 34% for a single-run baseline. Also wrote the expected-loss playbook that recommends whether to page the district, a fire-day danger model fitted to 538 Kansas wildfires, and a simulated FireNode sensor network with free, paid and offline views.</p>
+                    </a>
+
+                    <a class="card card--wide" target="_blank" rel="noopener" href="https://github.com/drewngo/noaa-apt-decoder-artix7">
+                        <div class="card__top">
+                            <h3>NOAA APT Satellite Decoder</h3>
+                            <span class="card__go mono">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
+                        </div>
+                        <ul class="tags mono"><li>verilog</li><li>nexys a7-100t</li><li>vivado</li><li>python</li><li>dsp</li><li>fixed-point fir</li></ul>
+                        <p>A dual-implementation NOAA APT weather-satellite decoder for a Xilinx Artix-7 FPGA, turning archived pre-demodulation IQ recordings into decoded imagery. A 5-stage Python reference pipeline validates the full chain: a Kaiser-windowed channel-select FIR, FM demodulation by phase differentiation, and a cascaded two-stage decimation bank that brings 62,400 Hz to the 4,160 Hz APT word rate exactly at Nyquist, matching NOAA's original zero-margin design.</p>
+                        <p>Now in RTL: a CORDIC-based fixed-point FM demodulator and a time-multiplexed serial FIR that reuses a single DSP slice across every tap, inside a ~1,600-cycle-per-sample budget at 100 MHz.</p>
+                    </a>
+
+                    <a class="card" target="_blank" rel="noopener" href="https://github.com/drewngo/Nexys-A7-ADT7420-Temperature-Sensor">
+                        <div class="card__top">
+                            <h3>FPGA Real-Time Temperature Monitor</h3>
+                            <span class="card__go mono">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
+                        </div>
+                        <ul class="tags mono"><li>verilog</li><li>i2c</li><li>vivado</li><li>icarus verilog</li></ul>
+                        <p>A from-scratch I2C master FSM reading an ADT7420 on a Nexys A7-100T, with the clock divided into quarter-phases so SDA transitions land well away from SCL edges. Readings become Celsius or Fahrenheit BCD on a multiplexed seven-segment display. A self-checking testbench models the ADT7420 as a slave and asserts every byte and ACK/NACK bit across randomized read cycles.</p>
+                    </a>
+
+                    <article class="card m-nolift">
+                        <div class="card__top">
+                            <h3>Home Lab</h3>
+                        </div>
+                        <ul class="tags mono"><li>proxmox</li><li>docker-compose</li><li>zfs</li><li>ubuntu server</li><li>cloudflare</li></ul>
+                        <p>A Proxmox hypervisor on ZFS mirrors with automated S.M.A.R.T. checks, running self-hosted cloud services and a media server that handles 7+ concurrent streams. Remote access goes through VPN and Cloudflare tunnels, which also served the infrastructure and data pipelines for a 60+ participant regional student hackathon.</p>
+                    </article>
+
+                    <a class="card" target="_blank" rel="noopener" href="https://github.com/prestondinh22/ollama_assistant">
+                        <div class="card__top">
+                            <h3>Ollama Home Assistant</h3>
+                            <span class="card__go mono">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
+                        </div>
+                        <ul class="tags mono"><li>python</li><li>ollama</li><li>whisper</li><li>flask</li><li>raspberry pi</li><li>gpio</li></ul>
+                        <p>An offline, voice-activated assistant on a Raspberry Pi with a physical GPIO button. A small Flask layer captures audio, transcribes it locally with Whisper, and runs Llama 3.1 through Ollama, all on the device.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- moment: the NOAA APT signal chain, played stage by stage while this section holds the screen -->
+        <section id="signal" class="signal" aria-labelledby="signal-h">
+            <div class="signal__stick">
+                <div class="wrap signal__in">
+                    <div class="signal__copy">
+                        <header class="sec__head sec__head--tight">
+                            <span class="sec__no mono">04</span>
+                            <h2 id="signal-h">from iq to image</h2>
+                        </header>
+                        <p class="signal__intro">My own project: a NOAA APT weather-satellite decoder, shown stage by stage.</p>
+                        <ol class="stages">
+                            <li class="stage is-on" data-stage="0">
+                                <span class="stage__n mono">a</span>
+                                <div><b>iq recording</b><span>Archived, pre-demodulation IQ straight from the receiver.</span></div>
+                            </li>
+                            <li class="stage" data-stage="1">
+                                <span class="stage__n mono">b</span>
+                                <div><b>channel select</b><span>A Kaiser-windowed FIR keeps the APT channel and drops its neighbours.</span></div>
+                            </li>
+                            <li class="stage" data-stage="2">
+                                <span class="stage__n mono">c</span>
+                                <div><b>fm demod</b><span>Phase differentiation turns frequency back into the 2,400 Hz AM subcarrier.</span></div>
+                            </li>
+                            <li class="stage" data-stage="3">
+                                <span class="stage__n mono">d</span>
+                                <div><b>decimate</b><span>Two cascaded stages take 62,400 Hz down to the 4,160 Hz word rate, exactly at Nyquist.</span></div>
+                            </li>
+                            <li class="stage" data-stage="4">
+                                <span class="stage__n mono">e</span>
+                                <div><b>image</b><span>Two lines a second: sync A, channel A, sync B, channel B.</span></div>
+                            </li>
+                        </ol>
+                    </div>
+                    <figure class="scope">
+                        <div class="scope__top mono">
+                            <span id="scope-label">a / iq recording</span>
+                            <span id="scope-rate">62,400 Hz</span>
+                        </div>
+                        <canvas class="scope__cv" id="scope" aria-label="Signal at the current decoder stage" role="img"></canvas>
+                        <div class="scope__bar" aria-hidden="true"><span id="scope-prog"></span></div>
+                        <figcaption class="scope__credit mono" id="scope-credit">APT image: NOAA-19, public domain, via <a class="link" target="_blank" rel="noopener" href="https://commons.wikimedia.org/wiki/File:NOAA_19_APT_Image.jpg">Wikimedia Commons</a></figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <div class="wrap">
+            <p class="foot__lead mono">say hi</p>
+            <a class="foot__mail" href="mailto:an@drewngo.com">an@drewngo.com</a>
+            <div class="foot__row mono">
+                <span>© 2026 andrew ngo</span>
+                <span class="foot__links">
+                    <a class="link" target="_blank" rel="noopener" href="https://github.com/drewngo">github</a>
+                    <a class="link" target="_blank" rel="noopener" href="https://www.linkedin.com/in/andrewngo26/">linkedin</a>
+                </span>
             </div>
         </div>
+    </footer>
 
-        <main>
-            <section class="collapsible">
-                <input type="checkbox" id="toggle-whoami" class="toggle-trigger">
-                
-                <label for="toggle-whoami">
-                    <h3>whoami</h3>
-                </label>
-                
-                <div class="content">
-                    <p>Hello! I'm Andrew, a Computer Engineering student at Wichita State and a Software Engineer Intern at Bombardier.</p>
-                    <p>Recently, I have been diving deep into digital design and computer architecture, focusing on the fundamentals required to build a career in the silicon and VLSI space.</p>
-                    <p>Outside of engineering, I'm either spending time with friends and family, watching films, reading comics/manga, discovering music, or playing video games. I also love a good pickleball session!</p>
-                    <p>Here's what I'm currently into:</p>
-                    <div id="currently-content" class="currently-list"></div>
-                </div>
-            </section>
-
-            <section class="collapsible">
-                <input type="checkbox" id="toggle-experience" class="toggle-trigger">
-                
-                <label for="toggle-experience">
-                    <h3>experience</h3>
-                </label>
-                
-                <div class="content">
-                    <p class="career-contact">Interested in working together? Reach out to me or connect on <a class="ext" target="_blank" href="https://www.linkedin.com/in/andrewngo26/">LinkedIn</a>.</p>
-
-                    <div class="career-entry">
-                        <img src="img/bombardier_logo.jpg" alt="Bombardier" class="career-logo">
-                        <div>
-                            <div class="career-company">Bombardier</div>
-                            <div class="career-role">Software Engineer Intern</div>
-                            <div class="career-date">05/2026 — Present</div>
-                            <div class="career-detail">Ground Station @ Bombardier Flight Test Center</div>
-                        </div>
-                    </div>
-
-                    <div class="career-entry">
-                        <img src="img/kochindustries_logo.jpg" alt="Koch Industries" class="career-logo">
-                        <div>
-                            <div class="career-company">Koch Industries</div>
-                            <div class="career-role">Product Support Analyst Co-op</div>
-                            <div class="career-date">01/2026 — 05/2026</div>
-                            <div class="career-detail">@ Flint Hills Resources</div>
-                        </div>
-                    </div>
-
-                    <div class="career-entry">
-                        <img src="img/netapp_logo.jpg" alt="NetApp" class="career-logo">
-                        <div>
-                            <div class="career-company">NetApp</div>
-                            <div class="career-role">QA Analyst Intern</div>
-                            <div class="career-date">03/2025 — 01/2026</div>
-                            <div class="career-detail"></div>
-                        </div>
-                    </div>
-
-                    <div class="career-entry">
-                        <img src="img/boeing_logo.jpg" alt="Boeing" class="career-logo">
-                        <div>
-                            <div class="career-company">Boeing</div>
-                            <div class="career-role">Information Technology Intern</div>
-                            <div class="career-date">11/2024 — 03/2025</div>
-                            <div class="career-detail"></div>
-                        </div>
-                    </div>
-
-                    <div class="career-entry">
-                        <img src="img/wichita_state_university_logo.jpg" alt="Wichita State University" class="career-logo">
-                        <div>
-                            <div class="career-company">Wichita State University</div>
-                            <div class="career-role">B.S. in Computer Engineering (Min. Computer Science)</div>
-                            <div class="career-date">08/2024 — Expected 05/2028</div>
-                            <div class="career-detail">Focus: Digital Design, Computer Architecture, Embedded Systems</div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-            
-            <section class="collapsible">
-                <input type="checkbox" id="toggle-projects" class="toggle-trigger">
-                
-                <label for="toggle-projects">
-                    <h3>projects</h3>
-                </label>
-                
-                <div class="content">
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <span class="project-name">NOAA APT Satellite Decoder</span>
-                            <div>
-                                <a class="project-link ext" target="_blank" href="https://github.com/drewngo/noaa-apt-decoder-artix7">github ↗</a>
-                            </div>
-                        </div>
-                        <div class="project-tech">verilog, nexys a7-100t, vivado, python, dsp, fixed-point fir filters</div>
-                        <p class="project-desc">Designing a dual-implementation NOAA APT weather satellite decoder targeting a Xilinx Artix-7 FPGA, processing archived pre-demodulation IQ recordings into decoded imagery. Built a 5-stage Python reference pipeline validating the full signal chain: a Kaiser-windowed channel-select FIR, FM demodulation via phase differentiation, and a cascaded two-stage decimation filter bank correcting a 62,400 Hz sample rate down to the 4,160 Hz APT word rate exactly at Nyquist, matching NOAA's original zero-margin engineering. Currently implementing the Verilog RTL, including a CORDIC-based fixed-point FM demodulator and time-multiplexed serial FIR architecture designed to reuse a single DSP slice across all filter taps within the ~1,600-cycle-per-sample budget at 100 MHz.</p>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-header">
-                            <span class="project-name">FPGA Real-Time Temperature Monitor</span>
-                            <div>
-                                <a class="project-link ext" target="_blank" href="https://github.com/drewngo/Nexys-A7-ADT7420-Temperature-Sensor">github ↗</a>
-                            </div>
-                        </div>
-                        <div class="project-tech">verilog, nexys a7-100t, i2c, vivado, icarus verilog</div>
-                        <p class="project-desc">Built a from-scratch I2C master FSM in Verilog to read an ADT7420 temperature sensor on a Nexys A7-100T FPGA, dividing the system clock into quarter-phases so SDA transitions land cleanly away from SCL edges. Sensor readings are converted into Celsius/Fahrenheit BCD digits, with a switch-driven unit toggle, and pushed out to a multiplexed seven-segment display refreshed fast enough to avoid visible flicker. Verified protocol correctness with a self-checking testbench that models the ADT7420 as a slave device, asserting each transaction byte and ACK/NACK bit, including randomized data payloads across repeated read cycles.</p>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <span class="project-name">Home Lab</span>
-                            <div>
-                            </div>
-                        </div>
-                        <div class="project-tech">proxmox, docker-compose, zfs, ubuntu server, cloudflare</div>
-                        <p class="project-desc">Architected and deployed a self-hosted virtualized network environment utilizing a Proxmox hypervisor and ZFS mirrored storage arrays with automated S.M.A.R.T. diagnostics. Infrastructure supports self-hosted local cloud services and a media server handling 7+ concurrent streams. Implemented secure remote access via VPN networks and Cloudflare tunnels to safely manage public web instances, including hosting the official infrastructure and data collection pipelines for a 60+ participant regional student hackathon.</p>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <span class="project-name">Ollama Home Assistant</span>
-                            <div>
-                            </div>
-                        </div>
-                        <div class="project-tech">python, ollama (llama 3.1), openai whisper, flask, raspberry pi, gpio</div>
-                        <p class="project-desc">Developed an entirely offline, voice-activated AI home assistant deployed on a Raspberry Pi using a custom physical GPIO button interface. Built a lightweight Python and Flask application layer to orchestrate live hardware audio capture, local transcription via OpenAI Whisper, and localized inference using Ollama to serve Meta's LLaMA 3.1 model completely on the edge.</p>
-                    </div>
-
-                </div>
-            </section>
-
-
-        </main>
-    </div>
-
-    <script>
-        (function () {
-            const GIST_URL = "https://gist.githubusercontent.com/drewngo/86e6049381f2a0b9dcfb0e731ec97c48/raw/currently.json";
-            const CATEGORIES = ["reading", "watching", "listening"];
-
-            function buildCard(item) {
-                const card = document.createElement("div");
-                card.className = "currently-card";
-
-                if (item.cover) {
-                    const img = document.createElement("img");
-                    img.src = item.cover;
-                    img.alt = item.title;
-                    img.className = "currently-cover";
-                    card.appendChild(img);
-                }
-
-                const info = document.createElement("div");
-                info.className = "currently-info";
-
-                const title = document.createElement("div");
-                title.className = "currently-title";
-                if (item.link) {
-                    const a = document.createElement("a");
-                    a.className = "ext";
-                    a.target = "_blank";
-                    a.href = item.link;
-                    a.textContent = item.title;
-                    title.appendChild(a);
-                } else {
-                    title.textContent = item.title;
-                }
-                info.appendChild(title);
-
-                const creator = item.author || item.creator;
-                if (creator) {
-                    const byline = document.createElement("div");
-                    byline.className = "currently-byline";
-                    byline.textContent = creator;
-                    info.appendChild(byline);
-                }
-
-                const meta = [item.status, item.progress].filter(Boolean).join(" — ");
-                if (meta) {
-                    const status = document.createElement("div");
-                    status.className = "currently-status";
-                    status.textContent = meta;
-                    info.appendChild(status);
-                }
-
-                if (item.note) {
-                    const note = document.createElement("div");
-                    note.className = "currently-note";
-                    note.textContent = item.note;
-                    info.appendChild(note);
-                }
-
-                card.appendChild(info);
-                return card;
-            }
-
-            fetch(GIST_URL)
-                .then((res) => res.json())
-                .then((data) => {
-                    const container = document.getElementById("currently-content");
-                    let rendered = false;
-
-                    CATEGORIES.forEach((category) => {
-                        const items = data[category];
-                        if (!items || items.length === 0) return;
-
-                        let lastLabel = null;
-                        items.forEach((item) => {
-                            const label = (item.status === "finished" ? "finished " : "currently ") + category;
-                            if (label !== lastLabel) {
-                                const heading = document.createElement("div");
-                                heading.className = "currently-category";
-                                heading.textContent = label;
-                                container.appendChild(heading);
-                                lastLabel = label;
-                            }
-                            container.appendChild(buildCard(item));
-                        });
-                        rendered = true;
-                    });
-
-                    if (!rendered) {
-                        container.textContent = "nothing to show right now.";
-                    }
-                })
-                .catch(() => {
-                    document.getElementById("currently-content").textContent = "couldn't load right now.";
-                });
-        })();
-    </script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
