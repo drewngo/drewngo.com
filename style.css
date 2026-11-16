@@ -417,6 +417,8 @@ html.m-enter.m-enter-done .hero__row { transition: opacity .4s ease; }
 
 .job__role { font-size: 14px; color: var(--muted); }
 
+.job__loc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
 .job__date {
     font-size: 12px;
     color: var(--muted);
