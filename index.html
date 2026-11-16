@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="description" content="Andrew Ngo: computer engineering student at Wichita State and software engineer intern at Bombardier. FPGA, DSP and digital design projects.">
-    <meta name="theme-color" content="#0d0e0c">
+    <meta name="theme-color" content="#000000">
     <meta property="og:title" content="andrew ngo">
     <meta property="og:description" content="computer engineering @ wichita state. software engineer intern @ bombardier.">
     <meta property="og:image" content="img/banner.jpg">
@@ -17,7 +17,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Barlow+Condensed:wght@500;600&family=Noto+Serif+JP:wght@900&family=Shippori+Mincho+B1:wght@800&family=Saira+Stencil+One&display=swap">
     <link rel="stylesheet" href="style.css">
     <script>document.documentElement.classList.add('js','m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),900)</script>
 </head>
@@ -26,7 +26,7 @@
 
     <header class="bar">
         <div class="wrap bar__in">
-            <a class="mark" href="#top">andrew_ngo</a>
+            <a class="mark" href="#top">andrew ngo</a>
             <nav class="bar__nav" aria-label="sections">
                 <a href="#whoami">whoami</a>
                 <a href="#work">work</a>
@@ -42,11 +42,10 @@
             <div class="wrap hero__in">
                 <div class="hero__top">
                     <canvas class="hero__trace" aria-hidden="true"></canvas>
-                    <p class="hero__kicker mono">computer engineering @ wichita state</p>
+                    <p class="hero__kicker mono">computer engineering @ wichita state · fpga &amp; dsp</p>
                     <h1 id="hero-h" class="hero__h">andrew ngo</h1>
                 </div>
                 <div class="hero__row">
-                    <p class="hero__lead">Software Engineer Intern at the Bombardier Flight Test Center and FPGA &amp; DSP Design Researcher in Wichita State's Quantum Science and Engineering Lab, working towards a career in FPGA design for space and avionics communication systems.</p>
                     <div class="hero__links">
                         <a class="btn" href="mailto:an@drewngo.com">email me</a>
                         <a class="btn btn--ghost" target="_blank" rel="noopener" href="https://github.com/drewngo">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
@@ -59,11 +58,12 @@
             </div>
         </section>
 
-        <section id="whoami" class="sec" aria-labelledby="whoami-h">
+        <section id="whoami" class="sec" data-kanji="自己" aria-labelledby="whoami-h">
             <div class="wrap">
                 <header class="sec__head">
-                    <span class="sec__no mono">01</span>
+                    <span class="sec__no mono">episode:01 <span lang="ja" aria-hidden="true">第壱話</span></span>
                     <h2 id="whoami-h">whoami</h2>
+                    <span class="sec__jp" lang="ja" aria-hidden="true">自己紹介</span>
                     <svg class="orbit" viewBox="0 0 240 64" aria-hidden="true">
                         <path id="orbit-path" class="orbit__path" d="M12 40 A108 17 -6 1 1 228 24 A108 17 -6 1 1 12 40 Z"/>
                         <g class="orbit__earth">
@@ -82,8 +82,9 @@
 
                 <div class="who">
                     <div class="who__text">
-                        <p class="who__big">Hi, I'm Andrew, a computer engineering junior at Wichita State. I focus on RTL design and want to build FPGA and embedded systems for space and avionics communications.</p>
-                        <p>Right now, I'm designing the FPGA and electronics for a laser-free quantum magnetometer in the Quantum Science and Engineering Lab. I'm also serving as External Vice President of our Society of Asian Scientists and Engineers (SASE) chapter, and co-leading CosmoShox, our NASA SUITS team.</p>
+                        <p class="who__big">Hello, I'm Andrew Ngo</p>
+                        <p>I'm a computer engineering junior at Wichita State. I focus on RTL design and want to build FPGA and embedded systems for space and avionics communications.</p>
+                        <p>Right now, I'm a software engineer intern at the Bombardier Flight Test Center and an FPGA &amp; DSP design researcher in the Quantum Science and Engineering Lab, where I'm designing the FPGA and electronics for a laser-free quantum magnetometer. I'm also serving as External Vice President of our Society of Asian Scientists and Engineers (SASE) chapter, and co-leading CosmoShox, our NASA SUITS team.</p>
                         <p>Outside of engineering, I'm a licensed ham radio operator, and I'm usually with friends and family, rock climbing, coaching intramural volleyball, reading comics and manga, watching films, finding new music, or playing video games.</p>
                     </div>
                     <div class="who__now">
@@ -98,11 +99,12 @@
             </div>
         </section>
 
-        <section id="work" class="sec" aria-labelledby="work-h">
+        <section id="work" class="sec" data-kanji="経歴" aria-labelledby="work-h">
             <div class="wrap">
                 <header class="sec__head">
-                    <span class="sec__no mono">02</span>
-                    <h2 id="work-h">work &amp; school</h2>
+                    <span class="sec__no mono">episode:02 <span lang="ja" aria-hidden="true">第弐話</span></span>
+                    <h2 id="work-h" style="--lines: 2">work &amp;<br>school</h2>
+                    <span class="sec__jp" lang="ja" aria-hidden="true">経歴</span>
                     <p class="sec__aside">Interested in working together? Reach out or connect on <a class="link" target="_blank" rel="noopener" href="https://www.linkedin.com/in/andrewngo26/">LinkedIn</a>.</p>
                 </header>
 
@@ -178,15 +180,17 @@
             </div>
         </section>
 
-        <section id="projects" class="sec" aria-labelledby="projects-h">
+        <section id="projects" class="sec" data-kanji="計画" aria-labelledby="projects-h">
             <div class="wrap">
                 <header class="sec__head">
-                    <span class="sec__no mono">03</span>
+                    <span class="sec__no mono">episode:03 <span lang="ja" aria-hidden="true">第参話</span></span>
                     <h2 id="projects-h">projects</h2>
+                    <span class="sec__jp" lang="ja" aria-hidden="true">計画</span>
                 </header>
 
                 <div class="cards">
                     <a class="card card--wide" target="_blank" rel="noopener" href="https://github.com/isaksmith/Firewatch">
+                        <span class="card__code" aria-hidden="true">P-01</span>
                         <div class="card__top">
                             <div class="card__title">
                                 <h3>FireWatch</h3>
@@ -200,6 +204,7 @@
                     </a>
 
                     <a class="card card--wide" target="_blank" rel="noopener" href="https://github.com/drewngo/noaa-apt-decoder-artix7">
+                        <span class="card__code" aria-hidden="true">P-02</span>
                         <div class="card__top">
                             <h3>NOAA APT Satellite Decoder</h3>
                             <span class="card__go mono">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
@@ -210,6 +215,7 @@
                     </a>
 
                     <a class="card" target="_blank" rel="noopener" href="https://github.com/drewngo/Nexys-A7-ADT7420-Temperature-Sensor">
+                        <span class="card__code" aria-hidden="true">P-03</span>
                         <div class="card__top">
                             <h3>FPGA Real-Time Temperature Monitor</h3>
                             <span class="card__go mono">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
@@ -219,6 +225,7 @@
                     </a>
 
                     <article class="card m-nolift">
+                        <span class="card__code" aria-hidden="true">P-04</span>
                         <div class="card__top">
                             <h3>Home Lab</h3>
                         </div>
@@ -227,6 +234,7 @@
                     </article>
 
                     <a class="card" target="_blank" rel="noopener" href="https://github.com/prestondinh22/ollama_assistant">
+                        <span class="card__code" aria-hidden="true">P-05</span>
                         <div class="card__top">
                             <h3>Ollama Home Assistant</h3>
                             <span class="card__go mono">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
@@ -240,12 +248,13 @@
 
         <!-- moment: the NOAA APT signal chain, played stage by stage while this section holds the screen -->
         <section id="signal" class="signal" aria-labelledby="signal-h">
-            <div class="signal__stick">
+            <div class="signal__stick" data-kanji="信号">
                 <div class="wrap signal__in">
                     <div class="signal__copy">
                         <header class="sec__head sec__head--tight">
-                            <span class="sec__no mono">04</span>
-                            <h2 id="signal-h">from iq to image</h2>
+                            <span class="sec__no mono">episode:04 <span lang="ja" aria-hidden="true">第四話</span></span>
+                            <h2 id="signal-h" style="--lines: 2">from iq<br>to image</h2>
+                    <span class="sec__jp" lang="ja" aria-hidden="true">信号解析</span>
                         </header>
                         <p class="signal__intro">My own project: a NOAA APT weather-satellite decoder, shown stage by stage.</p>
                         <ol class="stages">
@@ -291,6 +300,7 @@
             <a class="foot__mail" href="mailto:an@drewngo.com">an@drewngo.com</a>
             <div class="foot__row mono">
                 <span>© 2026 andrew ngo</span>
+                <span class="foot__end" lang="ja" aria-hidden="true">終劇</span>
                 <span class="foot__links">
                     <a class="link" target="_blank" rel="noopener" href="https://github.com/drewngo">github</a>
                     <a class="link" target="_blank" rel="noopener" href="https://www.linkedin.com/in/andrewngo26/">linkedin</a>

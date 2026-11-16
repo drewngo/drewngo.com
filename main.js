@@ -100,7 +100,7 @@
     function drawTrace() {
         if (!trace) return;
         const { ctx, w, h } = fitCanvas(trace);
-        const accent = css("--accent") || "#f2a33a";
+        const accent = css("--accent") || "#ff9830";
         const n = Math.max(60, Math.floor(w / 3));
         const end = Math.floor(n * traceState.p);
         const base = h - 2;
@@ -134,40 +134,25 @@
         ctx.stroke();
     }
 
-    /* ------ hero entrance: the name rises out of word masks, then the rest settles */
+    /* ------ hero entrance: kicker, then each line of the name, then the links, cut in hard one after another */
     function enter() {
-        const h1 = document.querySelector(".hero__h");
-        const kicker = document.querySelector(".hero__kicker");
-        const row = document.querySelector(".hero__row");
-        const img = document.querySelector(".hero__img");
+        const hero = document.querySelector(".hero");
+        root.classList.add("m-enter-done");
 
-        if (!hasGsap || reduced || !h1) {
-            root.classList.add("m-enter-done");
+        if (reduced || !hero) {
             drawTrace();
             return;
         }
 
-        const original = h1.textContent;
-        h1.setAttribute("aria-label", original);
-        h1.innerHTML = original.split(" ").map((w) => '<span class="w" aria-hidden="true"><span>' + w + "</span></span>").join(" ");
-        const words = h1.querySelectorAll(".w > span");
+        hero.classList.add("is-cut");
 
-        gsap.set([h1, kicker, row], { opacity: 1 });
-        root.classList.add("m-enter-done");
+        if (!hasGsap) {
+            traceState.p = 1;
+            drawTrace();
+            return;
+        }
 
-        const tl = gsap.timeline({
-            defaults: { ease: "expo.out" },
-            onComplete: () => {
-                h1.textContent = original;
-                h1.removeAttribute("aria-label");
-            },
-        });
-
-        tl.from(img, { scale: 1.05, duration: 1.1, ease: "power3.out" }, 0)
-          .from(words, { yPercent: 110, duration: .7, stagger: .08 }, 0)
-          .from(kicker, { y: 12, opacity: 0, duration: .52 }, 0)
-          .from(row.children, { y: 12, opacity: 0, duration: .52, stagger: .06 }, .4)
-          .to(traceState, { p: 1, duration: 1.1, ease: "power2.inOut", onUpdate: drawTrace }, .3);
+        gsap.to(traceState, { p: 1, duration: .9, delay: .3, ease: "steps(12)", onUpdate: drawTrace });
     }
 
     /* ------ the moment: the decoder chain, stage by stage */
@@ -224,7 +209,7 @@
             I.push(Math.cos(phase) + nz1);
             Q.push(Math.sin(phase) + nz2);
         }
-        [[Q, colors.muted, 1], [I, colors.accent, 1.4]].forEach(([s, col, lw]) => {
+        [[Q, colors.go, 1], [I, colors.accent, 1.4]].forEach(([s, col, lw]) => {
             ctx.beginPath();
             s.forEach((v, i) => {
                 const x = i / (n - 1) * sw, y = mid - v * amp;
@@ -255,7 +240,7 @@
             const x = i / (n - 1) * sw;
             i ? ctx.lineTo(x, mid - env * amp) : ctx.moveTo(x, mid - env * amp);
         }
-        ctx.strokeStyle = colors.ink;
+        ctx.strokeStyle = colors.go;
         ctx.lineWidth = 1;
         ctx.stroke();
         ctx.setLineDash([]);
@@ -353,10 +338,10 @@
 
     function renderScope() {
         if (!scopeCtx) return;
-        const colors = { accent: css("--accent"), muted: css("--muted"), ink: css("--ink"), line: css("--line"), line2: css("--line-strong") };
+        const colors = { accent: css("--accent"), muted: css("--muted"), ink: css("--ink"), go: css("--go"), line: css("--line"), line2: css("--line-strong") };
         const x = Math.min(4.999, Math.max(0, scopeState.p * 5));
         const k = Math.floor(x), f = x - k;
-        const blend = !reduced && k < 4 && f > .8 ? (f - .8) / .2 : 0;
+        const blend = 0;   /* stages cut, they never cross-fade */
         const t = k === 4 ? f / .8 : Math.min(1, f / .8);
 
         scopeCtx.clearRect(0, 0, sw, sh);
@@ -390,7 +375,7 @@
                     trigger: "#signal",
                     start: "top top",
                     end: "bottom bottom",
-                    scrub: reduced ? true : .6,
+                    scrub: true,
                     invalidateOnRefresh: true,
                 },
             });
@@ -422,6 +407,98 @@
         current = -1;
         renderScope();
     });
+
+    /* ------ title cards: each head cuts in hard the first time it is reached, its label decoding first */
+    function decode(node) {
+        const final = node.nodeValue;
+        const glyphs = "0123456789ABCDEF:/#";
+        let frame = 0;
+        const timer = setInterval(() => {
+            frame++;
+            node.nodeValue = final.split("").map((ch, i) =>
+                ch === " " || i < frame ? ch : glyphs[Math.floor(Math.random() * glyphs.length)]).join("");
+            if (frame >= final.length) clearInterval(timer);
+        }, 35);
+    }
+
+    const heads = document.querySelectorAll(".sec__head");
+    if ("IntersectionObserver" in window && heads.length && !reduced) {
+        root.classList.add("m-cards");
+        const cut = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+                if (!e.isIntersecting) return;
+                cut.unobserve(e.target);
+                e.target.classList.add("is-cut");
+                const label = e.target.querySelector(".sec__no");
+                if (label && label.firstChild && label.firstChild.nodeType === 3) decode(label.firstChild);
+            });
+        }, { rootMargin: "0px 0px -18% 0px" });
+        heads.forEach((h) => cut.observe(h));
+    }
+
+    /* ------ depth gauge: the page scrollbar, drawn as a ruler with one mark per episode and a marker for where you are */
+    const gauge = document.createElement("div");
+    const marker = document.createElement("span");
+    const episodes = Array.from(document.querySelectorAll("main > section[id]"));
+    const tapes = document.querySelectorAll(".scope, .foot");
+    let marks = [];
+
+    function scrollRange() {
+        return Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    }
+
+    function layGauge() {
+        const range = scrollRange();
+        marks.forEach((m, i) => { m.style.top = Math.min(1, episodes[i].offsetTop / range) * 100 + "%"; });
+    }
+
+    /* the hazard tape runs with the page */
+    function onScrollFx() {
+        const y = window.scrollY;
+        marker.style.transform = "translateY(" + Math.min(1, y / scrollRange()) * gauge.clientHeight + "px)";
+        if (!reduced) tapes.forEach((el) => el.style.setProperty("--tape", Math.round(y * .3) + "px"));
+    }
+
+    if (episodes.length) {
+        gauge.className = "gauge";
+        gauge.setAttribute("aria-hidden", "true");
+        marker.className = "gauge__at";
+        marks = episodes.map((_, i) => {
+            const m = document.createElement("span");
+            m.className = "gauge__mark mono";
+            m.textContent = String(i + 1).padStart(2, "0");
+            gauge.appendChild(m);
+            return m;
+        });
+        gauge.appendChild(marker);
+        document.body.appendChild(gauge);
+
+        /* press or drag anywhere on the gauge to move the page, as on a scrollbar */
+        const seek = (e) => {
+            const r = gauge.getBoundingClientRect();
+            window.scrollTo(0, Math.min(1, Math.max(0, (e.clientY - r.top) / r.height)) * scrollRange());
+        };
+        let dragging = false;
+        gauge.addEventListener("pointerdown", (e) => {
+            dragging = true;
+            gauge.setPointerCapture(e.pointerId);
+            seek(e);
+        });
+        gauge.addEventListener("pointermove", (e) => { if (dragging) seek(e); });
+        gauge.addEventListener("pointerup", () => { dragging = false; });
+        gauge.addEventListener("pointercancel", () => { dragging = false; });
+
+        let queued = false;
+        window.addEventListener("scroll", () => {
+            if (queued) return;
+            queued = true;
+            requestAnimationFrame(() => { queued = false; onScrollFx(); });
+        }, { passive: true });
+        window.addEventListener("resize", () => { layGauge(); onScrollFx(); });
+        window.addEventListener("load", () => { layGauge(); onScrollFx(); });
+        layGauge();
+        onScrollFx();
+    }
 
     const start = () => { enter(); initScope(); };
     if (document.fonts && document.fonts.ready) {
