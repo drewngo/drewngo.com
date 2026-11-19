@@ -194,7 +194,7 @@
                         <div class="card__top">
                             <div class="card__title">
                                 <h3>FireWatch</h3>
-                                <span class="award mono">2nd place · Lockheed Martin Skunk Works hackathon</span>
+                                <span class="award mono">award winner · 2nd place, Lockheed Martin Skunk Works hackathon</span>
                             </div>
                             <span class="card__go mono">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
                         </div>
@@ -203,8 +203,19 @@
                         <p>Built the fire spread forecast: an NLCD/CDL fuel map, terrain, hourly wind and a 24-member ensemble. Back-tested against archived VIIRS, MODIS and GOES-19 fire detections from real Plains fires (Anderson Creek, Starbuck, Ranger Road): starting from the first satellite pass, its range covered 77% of later polar-orbiter detections, against 34% for a single-run baseline. Also wrote the expected-loss playbook that recommends whether to page the district, a fire-day danger model fitted to 538 Kansas wildfires, and a simulated FireNode sensor network with free, paid and offline views.</p>
                     </a>
 
-                    <a class="card card--wide" target="_blank" rel="noopener" href="https://github.com/drewngo/noaa-apt-decoder-artix7">
+                    <a class="card card--wide" target="_blank" rel="noopener" href="https://vhdl.drewngo.com">
                         <span class="card__code" aria-hidden="true">P-02</span>
+                        <div class="card__top">
+                            <h3>VHDLBits</h3>
+                            <span class="card__go mono">vhdl.drewngo.com <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
+                        </div>
+                        <ul class="tags mono"><li>vhdl-2008</li><li>ghdl</li><li>python</li><li>cloud run</li><li>cloudflare workers</li></ul>
+                        <p>I learned a lot from Henry Wong's HDLBits but couldn't find anything like it for VHDL, so I built one: 216 VHDL-2008 practice problems with an online grader, for people who already know Verilog. Sixteen sections run from one-line assignments through numeric_std, FSMs, memories and testbench writing to bigger builds and bug hunts, each problem introducing one idea. No account needed; code and progress stay in the browser.</p>
+                        <p>The grader compiles the submission and a reference design side by side in GHDL, drives both with identical stimulus from a generated testbench and compares every output exactly, down to 'U', 'X' and 'Z': exhaustive vectors for small combinational problems, twice-per-cycle checks with randomized resets for sequential ones, and mutant designs that a learner's testbench must catch. Every reference answer is cross-checked against an independent Python model. Submissions run as untrusted code in sandboxed, resource-limited child processes on Cloud Run, behind a Cloudflare Worker with Turnstile and rate limits.</p>
+                    </a>
+
+                    <a class="card card--wide" target="_blank" rel="noopener" href="https://github.com/drewngo/noaa-apt-decoder-artix7">
+                        <span class="card__code" aria-hidden="true">P-03</span>
                         <div class="card__top">
                             <h3>NOAA APT Satellite Decoder</h3>
                             <span class="card__go mono">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
@@ -215,7 +226,7 @@
                     </a>
 
                     <a class="card" target="_blank" rel="noopener" href="https://github.com/drewngo/Nexys-A7-ADT7420-Temperature-Sensor">
-                        <span class="card__code" aria-hidden="true">P-03</span>
+                        <span class="card__code" aria-hidden="true">P-04</span>
                         <div class="card__top">
                             <h3>FPGA Real-Time Temperature Monitor</h3>
                             <span class="card__go mono">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
@@ -225,7 +236,7 @@
                     </a>
 
                     <article class="card m-nolift">
-                        <span class="card__code" aria-hidden="true">P-04</span>
+                        <span class="card__code" aria-hidden="true">P-05</span>
                         <div class="card__top">
                             <h3>Home Lab</h3>
                         </div>
@@ -234,7 +245,7 @@
                     </article>
 
                     <a class="card" target="_blank" rel="noopener" href="https://github.com/prestondinh22/ollama_assistant">
-                        <span class="card__code" aria-hidden="true">P-05</span>
+                        <span class="card__code" aria-hidden="true">P-06</span>
                         <div class="card__top">
                             <h3>Ollama Home Assistant</h3>
                             <span class="card__go mono">github <svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
