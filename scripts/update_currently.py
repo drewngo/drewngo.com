@@ -60,10 +60,13 @@ def latest_film(user):
         if not title:  # skip list posts etc.
             continue
         poster = re.search(r'<img src="([^"]+)"', item.findtext("description") or "")
+        # diary links look like /<user>/film/<slug>/[n/]; point at the film page instead
+        slug = re.search(r"/film/([^/]+)/", item.findtext("link") or "")
+        link = f"https://letterboxd.com/film/{slug.group(1)}/" if slug else ""
         return {
             "title": title,
             "creator": item.findtext("letterboxd:filmYear", "", LB_NS),
-            "link": item.findtext("link"),
+            "link": link,
             "cover": poster.group(1) if poster else "",
             "status": "finished",
             "progress": stars(item.findtext("letterboxd:memberRating", namespaces=LB_NS)),

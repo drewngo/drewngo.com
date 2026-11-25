@@ -581,7 +581,9 @@
 
                 let lastLabel = null;
                 items.forEach((item) => {
-                    const label = (item.status === "finished" ? "finished " : "currently ") + category;
+                    const label = item.status !== "finished" ? "currently " + category
+                        : category === "watching" ? "last watched"
+                        : "recently finished " + category;
                     if (label !== lastLabel) {
                         const heading = document.createElement("div");
                         heading.className = "currently-category";
