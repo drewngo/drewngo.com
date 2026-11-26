@@ -7,9 +7,9 @@ window.SITE = {
   linkedin: "https://www.linkedin.com/in/andrewngo26/",
   tagline: "Computer engineering @ Wichita State · FPGA & DSP",
   about: [
-    "I'm a computer engineering junior at Wichita State. I focus on RTL design and want to build FPGA and embedded systems for space and avionics communications.",
-    "Right now, I'm a software engineer intern at the Bombardier Flight Test Center and an FPGA & DSP design researcher in the Quantum Science and Engineering Lab, where I'm designing the FPGA and electronics for a laser-free quantum magnetometer. I'm also serving as External Vice President of our Society of Asian Scientists and Engineers (SASE) chapter, and co-leading CosmoShox, our NASA SUITS team.",
-    "Outside of engineering, I'm a licensed ham radio operator, and I'm usually with friends and family, rock climbing, coaching intramural volleyball, reading comics and manga, watching films, finding new music, or playing video games."
+    "hello i'm andrew, a 3rd year student majoring in computer engineering at Wichita State, focusing on RTL design and with the intention of building FPGA and embedded systems for space and avionics communications.",
+    "i currently work as a software engineer intern at Bombardier, and a researcher in the Quantum Science and Engineering Lab, where i'm designing the FPGA and electronics for a quantum magnetometer. i also serve as the external vice president of our Society of Asian Scientists and Engineers chapter, and co-lead CosmoShox, our NASA SUITS team.",
+    "in my personal time, i enjoy spending it with friends and family, or doing the variety of hobbies i partake in like amateur radio, rock climbing, reading, watching films, finding new music, or playing video games."
   ],
   jobs: [
     { co: "NASA Langley Research Center", unit: "Electronic Systems Branch", role: "Incoming Pathways Intern", loc: "Hampton, VA", date: "01/2027 (spring)", start: "2027", live: false, logo: "nasa_logo.jpg" },
