@@ -294,9 +294,25 @@
       <span class="sr">${e(A.alt)}. </span>${e(A.label)}${CARDS.length > 1 ? `<span class="hint lc"> · click the plate for the next item</span>` : ""}`;
     load(c).then((img) => { if (CARDS[idx] === c) draw(img); }).catch(() => ctx.clearRect(0, 0, cv.width, cv.height));
   }
-  $("scan-btn").addEventListener("click", () => {
+  function next() {
     idx = (idx + 1) % CARDS.length; show(idx);
     load(CARDS[(idx + 1) % CARDS.length]).catch(() => {});
+  }
+  /* auto-advance every 7s until the visitor clicks; then it's manual for good.
+     skipped while home isn't showing, the tab is hidden, or reduced motion is on */
+  let autoplay = null;
+  if (CARDS.length > 1 && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    load(CARDS[1]).catch(() => {});
+    autoplay = setInterval(() => {
+      if (document.hidden || $("scan-btn").closest(".view").hidden) return;
+      $("scan-cap").setAttribute("aria-live", "off"); /* don't announce automatic changes */
+      next();
+    }, 7000);
+  }
+  $("scan-btn").addEventListener("click", () => {
+    if (autoplay) { clearInterval(autoplay); autoplay = null; }
+    $("scan-cap").setAttribute("aria-live", "polite");
+    next();
   });
   if (CARDS.length) show(0); else $("scan-btn").hidden = true;
 
