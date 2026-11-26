@@ -59,6 +59,17 @@
     scrollbar-width: none; -ms-overflow-style: none;
   }
   .screen::-webkit-scrollbar { display: none; }
+  /* soft fade on whichever edge has more to scroll; set by JS */
+  @property --ft { syntax: "<length>"; inherits: false; initial-value: 0px; }
+  @property --fb { syntax: "<length>"; inherits: false; initial-value: 0px; }
+  .screen {
+    --ft: 0px; --fb: 0px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 var(--ft), #000 calc(100% - var(--fb)), transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 var(--ft), #000 calc(100% - var(--fb)), transparent);
+    transition: --ft .25s ease, --fb .25s ease;
+  }
+  .screen.more-above { --ft: 40px; }
+  .screen.more-below { --fb: 64px; }
   .view[hidden] { display: none; }
   @media (prefers-reduced-motion: no-preference) {
     .view.in { animation: fade .12s ease-out; }
@@ -460,6 +471,18 @@
     }
     first = false;
   }
+  /* scroll cue: fade the edge(s) of the screen that hide more content */
+  const scr = $("screen");
+  const cue = () => {
+    const max = scr.scrollHeight - scr.clientHeight;
+    scr.classList.toggle("more-above", scr.scrollTop > 2);
+    scr.classList.toggle("more-below", max - scr.scrollTop > 2);
+  };
+  scr.addEventListener("scroll", cue, { passive: true });
+  window.addEventListener("resize", cue);
+  scr.addEventListener("load", cue, true); /* images in posts change the height */
+  new MutationObserver(cue).observe(scr, { childList: true, subtree: true, attributes: true, attributeFilter: ["hidden"] });
+  if (document.fonts) document.fonts.ready.then(cue);
   window.addEventListener("hashchange", route);
   route();
 })();
