@@ -7,7 +7,7 @@ window.SITE = {
   linkedin: "https://www.linkedin.com/in/andrewngo26/",
   tagline: "Computer engineering @ Wichita State · FPGA & DSP",
   about: [
-    "hello i'm andrew, a 3rd year student majoring in computer engineering at Wichita State, focusing on RTL design and with the intention of building FPGA and embedded systems for space and avionics communications.",
+    "hello i'm andrew, a 3rd year student majoring in computer engineering at Wichita State, focusing on RTL design and verification, with the intention of building FPGA and embedded systems for space and avionics communications.",
     "i currently work as a software engineer intern at Bombardier, and a researcher in the Quantum Science and Engineering Lab, where i'm designing the FPGA and electronics for a quantum magnetometer. i also serve as the external vice president of our Society of Asian Scientists and Engineers chapter, and co-lead CosmoShox, our NASA SUITS team.",
     "in my personal time, i enjoy spending it with friends and family, or doing the variety of hobbies i partake in like amateur radio, rock climbing, reading, watching films, finding new music, or playing video games."
   ],
