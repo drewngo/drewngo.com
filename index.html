@@ -46,6 +46,9 @@
   }
   .side { min-width: 200px; max-width: 240px; align-self: center; }
   .side .clock { color: var(--mute); font-size: 15px; margin: -14px 0 22px; font-variant-numeric: tabular-nums; }
+  .clock-line { display: inline-block; transition: opacity .5s ease, transform .5s ease, filter .5s ease; }
+  .clock-line.swap { opacity: 0; transform: translateY(-3px); filter: blur(1.5px); }
+  @media (prefers-reduced-motion: reduce) { .clock-line { transition: none; } }
   .side h1 { font: 400 34px/1.05 "IM Fell English SC", serif; margin: 0 0 22px; text-transform: lowercase; }
   .side h1 a { color: var(--ink); }
   .side h1 a:hover { color: var(--red); }
@@ -166,7 +169,7 @@
 <div class="page">
   <header class="side">
     <h1 id="title" tabindex="-1"><a href="#/" id="title-link"></a></h1>
-    <p class="clock lc">wichita — <time id="clock">--:--</time></p>
+    <p class="clock lc"><span class="clock-line" id="clock-line"><span id="clock-place">wichita, ks</span> — <time id="clock">--:--</time></span></p>
     <nav aria-label="sections">
       <ul class="lc" id="nav">
         <li><a href="#/">home</a></li>
@@ -433,14 +436,31 @@
     }).catch(() => { $("post").innerHTML = `<p class="status lc">that note isn't in the notebook.</p>`; });
   }
 
-  /* ---------- local time in wichita ---------- */
-  const clockFmt = new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", hour: "numeric", minute: "2-digit" });
+  /* ---------- local time, alternating wichita / hampton every 10s ---------- */
+  const PLACES = [
+    { name: "wichita, ks", tz: "America/Chicago" },
+    { name: "hampton, va", tz: "America/New_York" },
+  ].map((p) => ({ ...p, fmt: new Intl.DateTimeFormat("en-US", { timeZone: p.tz, hour: "numeric", minute: "2-digit" }) }));
+  let place = 0;
+  function showClock() {
+    const p = PLACES[place];
+    $("clock-place").textContent = p.name;
+    $("clock").textContent = p.fmt.format(new Date()).toLowerCase().replace(/\s/g, " ");
+  }
   function tick() {
     const now = new Date();
-    $("clock").textContent = clockFmt.format(now).toLowerCase().replace(/\s/g, " ");
+    showClock();
     setTimeout(tick, 60000 - (now.getSeconds() * 1000 + now.getMilliseconds()) + 50);
   }
   tick();
+  const still = matchMedia("(prefers-reduced-motion: reduce)");
+  setInterval(() => {
+    const line = $("clock-line");
+    const next = () => { place = (place + 1) % PLACES.length; showClock(); };
+    if (still.matches || document.hidden) return next();
+    line.classList.add("swap");
+    setTimeout(() => { next(); line.classList.remove("swap"); }, 500);
+  }, 10000);
 
   /* ---------- hash router ---------- */
   const TITLES = { "": S.name, about: "about", now: "now", projects: "projects", work: "work", contact: "contact", credits: "credits", notebook: "notebook", post: "notebook" };
