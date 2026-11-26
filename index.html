@@ -46,7 +46,12 @@
   }
   .side { min-width: 200px; max-width: 240px; align-self: center; }
   .side .clock { color: var(--mute); font-size: 15px; margin: -14px 0 22px; font-variant-numeric: tabular-nums; }
-  .clock-line { display: inline-block; transition: opacity .5s ease, transform .5s ease, filter .5s ease; }
+  .clock-line {
+    display: inline-block; font: inherit; color: inherit; letter-spacing: inherit; text-transform: inherit; text-align: left;
+    background: none; border: 0; padding: 0; margin: 0; cursor: pointer;
+    transition: opacity .5s ease, transform .5s ease, filter .5s ease, color .3s ease;
+  }
+  .clock-line:hover { color: var(--red); }
   .clock-line.swap { opacity: 0; transform: translateY(-3px); filter: blur(1.5px); }
   @media (prefers-reduced-motion: reduce) { .clock-line { transition: none; } }
   .side h1 { font: 400 34px/1.05 "IM Fell English SC", serif; margin: 0 0 22px; text-transform: lowercase; }
@@ -169,7 +174,7 @@
 <div class="page">
   <header class="side">
     <h1 id="title" tabindex="-1"><a href="#/" id="title-link"></a></h1>
-    <p class="clock lc"><span class="clock-line" id="clock-line"><span id="clock-place">wichita, ks</span> — <time id="clock">--:--</time></span></p>
+    <p class="clock lc"><button type="button" class="clock-line" id="clock-line" title="switch city"><span id="clock-place">wichita, ks</span> — <time id="clock">--:--</time></button></p>
     <nav aria-label="sections">
       <ul class="lc" id="nav">
         <li><a href="#/">home</a></li>
@@ -454,13 +459,20 @@
   }
   tick();
   const still = matchMedia("(prefers-reduced-motion: reduce)");
-  setInterval(() => {
+  let swapping = false, loop;
+  function swapCity() {
+    if (swapping) return;
     const line = $("clock-line");
     const next = () => { place = (place + 1) % PLACES.length; showClock(); };
     if (still.matches || document.hidden) return next();
+    swapping = true;
     line.classList.add("swap");
-    setTimeout(() => { next(); line.classList.remove("swap"); }, 500);
-  }, 10000);
+    setTimeout(() => { next(); line.classList.remove("swap"); swapping = false; }, 500);
+  }
+  const startLoop = () => { clearInterval(loop); loop = setInterval(swapCity, 10000); };
+  /* click swaps now; the 10s loop restarts so it doesn't flip right back */
+  $("clock-line").addEventListener("click", () => { swapCity(); startLoop(); });
+  startLoop();
 
   /* ---------- hash router ---------- */
   const TITLES = { "": S.name, about: "about", now: "now", projects: "projects", work: "work", contact: "contact", credits: "credits", notebook: "notebook", post: "notebook" };
