@@ -914,8 +914,6 @@ html:not(.js) .scope { display: none; }
     border: 1px solid var(--line-strong);
 }
 
-.currently-card--listening .currently-cover { height: 44px; }
-
 .currently-title { font-size: 15px; font-weight: 500; color: var(--ink); }
 
 .currently-byline,

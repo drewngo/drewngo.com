@@ -1,18 +1,16 @@
-"""Refresh the "currently" gist with the latest Letterboxd diary entry and YT Music play.
+"""Refresh the "currently" gist with the latest Letterboxd diary entry.
 
 The "reading" list is left alone, so it can still be edited by hand in the gist.
-If a source fails, that category keeps its previous value.
+If Letterboxd fails, the previous value is kept.
 
 Env:
   GIST_TOKEN        GitHub token that can write gists
-  YTMUSIC_AUTH      contents of the browser.json made by `ytmusicapi browser`
 """
 
 import json
 import os
 import re
 import sys
-import tempfile
 import urllib.request
 import xml.etree.ElementTree as ET
 
@@ -75,36 +73,6 @@ def latest_film(user):
     return None
 
 
-def latest_track(auth_json):
-    from ytmusicapi import YTMusic
-
-    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
-        f.write(auth_json)
-        path = f.name
-    try:
-        history = YTMusic(path).get_history()
-    finally:
-        os.unlink(path)
-    if not history:
-        return None
-
-    t = history[0]
-    artists = ", ".join(a["name"] for a in t.get("artists") or [])
-    album = (t.get("album") or {}).get("name")
-    thumbs = t.get("thumbnails") or []
-    cover = thumbs[-1]["url"] if thumbs else ""
-    cover = re.sub(r"=w\d+-h\d+", "=w300-h300", cover)  # bump googleusercontent art to 300px
-    return {
-        "title": t["title"],
-        "creator": " · ".join(filter(None, [artists, album])),
-        "link": "https://music.youtube.com/watch?v=" + t["videoId"],
-        "cover": cover,
-        "status": "",
-        "progress": "",
-        "note": "",
-    }
-
-
 def keep_note(new, old_items):
     """Keep a hand-written note if the item hasn't changed."""
     for old in old_items or []:
@@ -116,6 +84,7 @@ def keep_note(new, old_items):
 def main():
     old = read_gist()
     new = dict(old)
+    new.pop("listening", None)  # no longer shown on the site
     failed = False
 
     try:
@@ -126,21 +95,13 @@ def main():
         print("letterboxd failed:", e, file=sys.stderr)
         failed = True
 
-    try:
-        track = latest_track(os.environ["YTMUSIC_AUTH"])
-        if track:
-            new["listening"] = keep_note(track, old.get("listening"))
-    except Exception as e:
-        print("ytmusic failed:", e, file=sys.stderr)
-        failed = True
-
     if new != old:
         write_gist(new)
         print("gist updated")
     else:
         print("no change")
 
-    # fail the run so a broken source (e.g. expired YT cookies) shows up in Actions
+    # fail the run so a broken source shows up in Actions
     sys.exit(1 if failed else 0)
 
 

@@ -507,9 +507,9 @@
         start();
     }
 
-    /* ------ currently reading / watching / listening, from the gist */
+    /* ------ currently reading / watching, from the gist */
     const GIST_URL = "https://gist.githubusercontent.com/drewngo/86e6049381f2a0b9dcfb0e731ec97c48/raw/currently.json";
-    const CATEGORIES = ["reading", "listening", "watching"];
+    const CATEGORIES = ["reading", "watching"];
 
     function buildCard(item, category) {
         const card = document.createElement("div");
