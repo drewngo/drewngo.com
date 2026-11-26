@@ -89,6 +89,7 @@
   .date { color: var(--mute); font-variant-numeric: tabular-nums; white-space: nowrap; }
   .sub { display: block; color: var(--mute); font-size: 15px; line-height: 1.45; }
   .status { color: var(--mute); font-style: italic; }
+  .disclaimer { color: var(--mute); font-size: 14px; font-style: italic; margin: 0 0 18px; }
   .post { max-width: 64ch; }
   .post h2 { font: 400 26px/1.25 "IM Fell English", serif; margin: 0 0 4px; }
   .post .date { display: block; margin-bottom: 22px; }
@@ -201,11 +202,13 @@
 
     <div class="view" data-route="notebook" hidden>
       <p class="kicker" lang="ja" aria-hidden="true">覚書</p>
+      <p class="disclaimer lc">all opinions are my own and do not reflect those of my employer or any organization i am affiliated with.</p>
       <div id="notebook-list" aria-live="polite"><p class="status lc">retrieving…</p></div>
     </div>
 
     <div class="view" data-route="post" hidden>
       <p class="kicker lc"><a href="#/notebook">← notebook</a></p>
+      <p class="disclaimer lc">all opinions are my own and do not reflect those of my employer or any organization i am affiliated with.</p>
       <article class="post" id="post" aria-live="polite"></article>
     </div>
 
