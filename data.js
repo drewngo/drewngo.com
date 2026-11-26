@@ -101,10 +101,10 @@ window.LAB = {
       .then((r) => r.json())
       .then((data) => {
         const out = [];
-        ["listening", "watching", "reading"].forEach((cat) => {
+        ["reading", "watching", "listening"].forEach((cat) => {
           (data[cat] || []).forEach((it) => {
             const label = it.status !== "finished" ? "currently " + cat
-              : cat === "watching" ? "last watched" : "recently finished " + cat;
+              : cat === "watching" ? "last watched" : cat === "reading" ? "last read" : "recently finished " + cat;
             let g = out.find((x) => x.category === cat && x.label === label);
             if (!g) out.push((g = { category: cat, label, items: [] }));
             g.items.push({ ...it, by: it.author || it.creator || "" });
