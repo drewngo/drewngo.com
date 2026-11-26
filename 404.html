@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex">
-    <meta name="theme-color" content="#000000">
-
-    <link rel="icon" type="image/png" href="/img/frutiger/favicon.png">
-
-    <title>404 · andrew ngo</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Barlow+Condensed:wght@500;600&family=Noto+Serif+JP:wght@900&family=Shippori+Mincho+B1:wght@800&display=swap">
-    <link rel="stylesheet" href="/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FBFAF5">
+<link rel="icon" type="image/png" href="/img/frutiger/favicon.png">
+<title>not found · andrew ngo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Zen+Old+Mincho:wght@400&display=swap">
+<style>
+  :root { --paper: #FBFAF5; --ink: #2b2b2b; --mute: #605b54; --red: #AB3B3A; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; background: var(--paper); color: var(--ink); }
+  body { font: 400 19px/1.55 "IM Fell English", Georgia, serif; display: grid; place-items: center; min-height: 100vh; padding: 24px 18px; }
+  main { max-width: 34rem; }
+  h1 { font: 400 34px/1.05 "IM Fell English SC", serif; text-transform: lowercase; margin: 0 0 14px; }
+  .no { color: var(--mute); font-size: 15px; margin: 0 0 4px; }
+  .no span { font-family: "Zen Old Mincho", serif; }
+  p { margin: 0 0 18px; }
+  a { color: var(--red); text-decoration: none; transition: color .3s ease; }
+  a:hover { color: var(--ink); }
+  a:focus-visible { outline: 1px solid var(--red); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { a { transition: none; } }
+</style>
 </head>
 <body>
-    <main class="lost">
-        <span class="lost__tape" aria-hidden="true"></span>
-        <span class="lost__tape" aria-hidden="true"></span>
-        <div class="lost__in">
-            <p class="lost__stamp mono">emergency <span lang="ja" aria-hidden="true">警報</span></p>
-            <h1 class="lost__h">404</h1>
-            <p class="lost__pattern mono">pattern: blue <span lang="ja" aria-hidden="true">パターン青</span></p>
-            <p class="lost__p">This page is not here. Whatever answered the request was not the site.</p>
-            <a class="btn" href="/">return to the site</a>
-        </div>
-    </main>
+  <main>
+    <p class="no"><span lang="ja">資料番号</span> 404 — <span lang="ja">欠番</span></p>
+    <h1>not in the archive</h1>
+    <p>nothing is filed under this address. it may have moved, or it was never catalogued.</p>
+    <p><a href="/">← back to the archive</a></p>
+  </main>
 </body>
 </html>

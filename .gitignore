@@ -1,1 +1,5 @@
 .DS_Store
+lab/
+research_notes/
+reports/
+__pycache__/
